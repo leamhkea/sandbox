@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+body {
+  background-color: rgba(216, 159, 134, 1);
+}
+
+button {
+  padding: 2.5rem;
+  background-color: rgba(232, 219, 203, 1);
+  color: rgba(101, 80, 63, 1);
+  margin: 3rem 0;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+}
+.buttonstart {
+  display: flex;
+  justify-content: center;
+}
+
+h3,
+h2,
+h1 {
+  margin: 6rem 0;
+  text-align: center;
+  color: rgba(253, 240, 77, 1);
+}
+
+h3,
+h2 {
+  font-weight: lighter;
+}
+
+.hidden {
+  display: none;
+}
