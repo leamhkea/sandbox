@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gæt Tal</title>
+  </head>
+  <body>
+    <h1>Gæt Tal</h1>
+    <p>Gæt et tal mellem 0 og 100:</p>
+
+    <input
+      type="number"
+      id="userGuess"
+      placeholder="Indtast dit gæt"
+      min="0"
+      max="100"
+    />
+    <button onclick="checkGuess()">Tjek Gæt</button>
+
+    <p id="result"></p>
+    <!-- Her vises resultatet -->
+
+    <script>
+      // Genererer et tilfældigt tal fra 0 til 100
+      const randomNumber = Math.floor(Math.random() * 101);
+
+      function checkGuess() {
+        // Henter brugerens gæt med .value
+        const userGuess = document.getElementById("userGuess").value;
+        const resultElement = document.getElementById("result");
+
+        // Tjekker om brugeren har indtastet noget
+        if (userGuess === "") {
+          resultElement.textContent = "Du skal indtaste et tal!";
+          return;
+        }
+
+        // Konverterer brugerens input til et tal (parseInt) og sammenligner med det tilfældige tal
+        if (parseInt(userGuess) === randomNumber) {
+          resultElement.textContent = `Tillykke! Du gættede rigtigt jubii. Det tilfældige tal var ${randomNumber}.`;
+        } else if (parseInt(userGuess) > randomNumber) {
+          resultElement.textContent = "Dit gæt er for højt! Prøv igen.";
+        } else {
+          resultElement.textContent = "Dit gæt er for lavt! Prøv igen.";
+        }
+      }
+    </script>
+  </body>
+</html>
