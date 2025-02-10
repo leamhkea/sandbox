@@ -1,0 +1,40 @@
+/* Default body style */
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+footer,
+header {
+  margin: 5rem 0;
+}
+
+/* Theme styles based on data-theme attribute */
+body[data-theme="light"] {
+  background-color: var(--Light_background);
+  color: var(--Light_text);
+}
+
+body[data-theme="dark"] {
+  background-color: var(--Dark_background);
+  color: var(--Dark_text);
+}
+
+body[data-theme="hawaii"] {
+  background-color: var(--Hawaii_background);
+  color: var(--Hawaii_text);
+}
+
+:root {
+  /* Colors */
+  --Light_background: bisque;
+  --Light_text: rgb(212, 160, 93);
+
+  --Dark_background: cadetblue;
+  --Dark_text: rgb(18, 53, 55);
+
+  --Hawaii_background: red;
+  --Hawaii_text: rgb(106, 8, 8);
+}
