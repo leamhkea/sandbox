@@ -35,6 +35,6 @@ body[data-theme="hawaii"] {
   --Dark_background: cadetblue;
   --Dark_text: rgb(18, 53, 55);
 
-  --Hawaii_background: red;
-  --Hawaii_text: rgb(106, 8, 8);
+  --Hawaii_background: purple;
+  --Hawaii_text: greenyellow;
 }
