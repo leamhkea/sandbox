@@ -1,0 +1,15 @@
+body {
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+  width: 80px;
+  margin: 0 0.5rem;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+}
