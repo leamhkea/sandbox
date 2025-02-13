@@ -53,27 +53,6 @@ function prepareObjects(jsonData) {
   displayList();
 }
 
-// function prepareObject(jsonObject) {
-//   const animal = {};
-//   const texts = jsonObject.fullname.split(" ");
-//   name = texts[0];
-//   desc = texts[2];
-//   type = texts[3];
-//   age = [jsonObject.age];
-//   return animal;
-// }
-
-function filterList() {
-  //Create a filtered list of only cats
-  const filteredList = allAnimals.filter(isCat);
-
-  displayList(filteredList);
-}
-
-function isCat(animal) {
-  return animal.type === "cat";
-}
-
 function displayList() {
   // clear the list
   document.querySelector("#list tbody").innerHTML = "";
