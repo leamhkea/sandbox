@@ -12,6 +12,13 @@ const Animal = {
   age: 0,
 };
 
+//Her sættes globale globale const som alle functions benytter
+const settings = {
+  filterBy: "all",
+  sortBy: "name",
+  sortDir: "asc",
+};
+
 function start() {
   console.log("ready");
 
@@ -61,22 +68,27 @@ function preapareObject(jsonObject) {
 function selectFilter(event) {
   const filter = event.target.dataset.filter;
   console.log(`User selected ${filter}`);
-  filterList(filter);
+  setFilter(filter);
 }
 
-function filterList(filterBy) {
-  //All animals on the all button
-  let filteredList = allAnimals;
+function setFilter(filter) {
+  settings.filterBy = filter;
+  buildList();
+}
 
-  if (filterBy === "cat") {
+function filterList(filteredList) {
+  //All animals on the all button
+  //   let filteredList = allAnimals;
+
+  if (settings.filterBy === "cat") {
     //Create a filtered list of only cats
     filteredList = allAnimals.filter(isCat);
-  } else if (filterBy === "dog") {
+  } else if (settings.filterBy === "dog") {
     //Create a filtered list of only dogs
     filteredList = allAnimals.filter(isDog);
   }
 
-  displayList(filteredList);
+  return filteredList;
 }
 
 function isCat(animal) {
@@ -98,32 +110,47 @@ function selectSort(event) {
     event.target.dataset.sortDirection = "asc";
   }
   console.log(`User selected ${sortBy}` - `${sortDir}`);
-  sortList(sortBy, sortDir);
+  setSort(sortBy, sortDir);
 }
 
-function sortList(sortBy, sortDir) {
-  //Gør PRÆCIS det samme som i filterList med parameter filterBy
-  let sortedList = allAnimals;
-  let direction = -1;
+function setSort(sortBy, sortDir) {
+  settings.sortBy = sortBy;
+  settings.sortDir = sortDir;
 
-  if (sortDir === "desc") {
+  buildList();
+}
+
+function sortList(sortedList) {
+  //Gør PRÆCIS det samme som i filterList med parameter filterBy
+  //   let sortedList = allAnimals;
+  let direction = 1;
+
+  if (settings.sortDir === "desc") {
     direction = -1;
   } else {
-    direction = -1;
+    settings.direction = 1;
   }
 
   //Sætter const til at sortere allAnimals til "sort" i alfabetisk rækkefølge
   sortedList = sortedList.sort(sortByProporty);
 
+  //Functionen sættes ind i den anden function for at sortBy fortsat gælder som const
   function sortByProporty(animalA, animalB) {
     //Hvis animalA kommer før animalB, så -1
-    if (animalA[sortBy] < animalB[sortBy]) {
+    if (animalA[settings.sortBy] < animalB[settings.sortBy]) {
       return -1 * direction;
     } else {
       return 1 * direction;
     }
   }
   //Sætter const ovenover i parameter i function displayList
+  return sortedList;
+}
+
+function buildList() {
+  const currentList = filterList(allAnimals);
+  const sortedList = sortList(currentList);
+
   displayList(sortedList);
 }
 
