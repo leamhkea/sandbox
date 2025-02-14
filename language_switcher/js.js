@@ -14,15 +14,32 @@ const texts = {
   },
 };
 
-document
-  .querySelector("#locale_selectors")
-  .addEventListener("change", languageChange);
+document.querySelector(".da").addEventListener("click", languageChangeDa);
 
-function languageChange() {
-  locale = document.querySelector("#locale_selectors").value;
-  console.log("TEXTS", texts[locale].texts);
-  texts[locale].texts.forEach((element) => {
-    document.querySelector(element.location).textContent = element.text;
+function languageChangeDa() {
+  texts.da.texts.forEach(({ text, location }) => {
+    const element = document.querySelector(location);
+    if (element) {
+      element.textContent = text;
+    }
   });
 }
-let locale = "da";
+
+document.querySelector(".de").addEventListener("click", languageChangeDe);
+
+function languageChangeDe() {
+  texts.de.texts.forEach(({ text, location }) => {
+    const element = document.querySelector(location);
+    if (element) {
+      element.textContent = text;
+    }
+  });
+}
+
+//   locale = document.querySelector("#locale_selectors").value;
+//   console.log("TEXTS", texts[locale].texts);
+//   texts[locale].texts.forEach((element) => {
+//     document.querySelector(element.location).textContent = element.text;
+//   });
+// }
+// let locale = "da";
