@@ -13,4 +13,10 @@ setInterval(getData, 10000);
 
 function visData(data) {
   console.log(data);
+
+  const inQueue = data.inQueue;
+
+  document.querySelector(
+    "p"
+  ).textContent = `Antallet af personer i kø før dig er ${inQueue} personer`;
 }
