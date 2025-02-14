@@ -1,22 +1,33 @@
-// document.querySelector("#theme").addEventListener("change", themeChange);
+// "use strict";
+// // Få fat i select-elementet og body elementet
+// const theme = document.getElementById("theme");
+// const body = document.body;
 
-// function themeChange() {
-//   locale = document.querySelector("#theme").value;
-//   console.log("TEXTS", texts[locale].texts);
-//   texts[locale].texts.forEach("change", (element) => {
-//     document.querySelector(element.location).textContent = element.text;
-//   });
-// }
-// let locale = "ligth";
+// // Event listener der ændrer data-theme attributten
+// theme.addEventListener("change", (e) => {
+//   const selectedTheme = e.target.value;
+//   body.setAttribute("data-theme", selectedTheme);
+// });
 
-// let themes = "#hawaii";
+"use strict";
 
-// Få fat i select-elementet og body elementet
-const theme = document.getElementById("theme");
-const body = document.body;
+const theStoredTheme = localStorage.getItem("storedTheme");
 
-// Event listener der ændrer data-theme attributten
-theme.addEventListener("change", (e) => {
-  const selectedTheme = e.target.value;
-  body.setAttribute("data-theme", selectedTheme);
-});
+//Sættes til at huske valgte tema ved reload, så temaet som vises passer til det tidligere valgte. Så sæt tema og select til "thestoredTheme"
+if (theStoredTheme !== null) {
+  document.querySelector("body").dataset.theChange = theStoredTheme;
+  document.querySelector("#theme").value = theStoredTheme;
+}
+
+//Sætter eventlistener på dropdown
+document.querySelector("#theme").addEventListener("change", theChange);
+
+// localStorage.getItem("storedTheme");
+function theChange(evt) {
+  const chosenTheme = evt.target.value;
+  console.log("change", chosenTheme);
+
+  //Sætter tema til at være det valgte tema i dropdown
+  document.querySelector("body").dataset.theme = chosenTheme;
+  localStorage.setItem("storedTheme", chosenTheme);
+}
